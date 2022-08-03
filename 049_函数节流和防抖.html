@@ -1,0 +1,73 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: congsir
+ * @Date: 2022-08-03 15:45:15
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-03 16:59:10
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数节流和防抖</title>
+    <style>
+      html,
+      body {
+        height: 500%;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">按钮</button>
+    <script>
+      /**
+       * 节流：一个函数执行一次后，只有大于设定的周期后才会执行第二次
+       * 用处：对于需要频繁触发的函数，出于性能优化方面的考虑，在规定时间内，只让函数第一次被触发时生效，后面不生效
+       *
+       * @name: ljy
+       * @msg:
+       * @param {要执行的函数} fn
+       * @param {规定的时间} delay
+       *
+       */
+      // function throttle(fn, delay) {
+      //   // 记录上一次函数触发的时间
+      //   let lastTime = 0;
+      //   return function () {
+      //     // 记录当前函数触发的时间
+      //     let nowTime = Date.now();
+      //     // 如果当前函数触发时间距离上一次函数触发时间大于规定的间隔。则执行函数fn
+      //     if (nowTime - lastTime > delay) {
+      //       fn.call(this);
+      //       // 同步时间
+      //       lastTime = nowTime;
+      //     }
+      //   };
+      // }
+      // document.onscroll = throttle(()=>console.log('函数触发了！', Date.now()), 200)
+
+      /**
+       * 防抖：一个需要频繁触发的函数，在规定的时间内，只让最后一次生效，前面的不生效
+       *
+       * @name: ljy
+       * @msg:
+       * @param {要执行的函数} fn2
+       * @param {规定的时间} delay
+       */
+      function debounce(fn2, delay) {
+        // 记录上一次的定时器
+        let timer = null;
+        return function () {
+          // 清除上一次的定时器
+          clearTimeout(timer);
+          // 重新设置定时器
+          timer = setTimeout(fn2, delay);
+        };
+      }
+      document.querySelector('.btn').onclick = debounce(()=>console.log('防抖执行了'+Date.now()), 200)
+    </script>
+  </body>
+</html>
