@@ -1,0 +1,43 @@
+<!--
+ * @Author: lijy
+-->
+<!--
+ * @Author: lijy
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手写new</title>
+  </head>
+  <body>
+    <script>
+      function myNew(fn, ...args) {
+        // 判断方法体
+        if (typeof fn !== "function") {
+          throw "第一个函数必须是方法体";
+        }
+        // 创建一个空对象指向 fn 这个类的原型对象
+        const obj = Object.create(fn.prototype);
+        // 通过 apply 绑定 this 并且获取运行后的结果
+        let result = fn.apply(obj, args);
+        // 如果构造函数返回的结果是引用数据类型，则返回运行后的结果，否则返回新创建的 obj
+        const isObject = typeof result === "object" && result !== null;
+        const isFunction = typeof result === "function";
+        return isObject || isFunction ? result : obj;
+      }
+      // 测试
+      function Car(make, model, year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+      }
+      const car1 = new Car("Eagle", "Talon TSi", 1993);
+      const car2 = myNew(Car,"Eagle", "Talon TSi", 1993)
+      console.log(car1.make);
+      console.log(car2.make)
+    </script>
+  </body>
+</html>
