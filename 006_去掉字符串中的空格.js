@@ -1,3 +1,6 @@
+/*
+ * @Author: lijy
+ */
 /**
  * str = str.replace(/\s+/g,'')     去掉字符串内的所有空格
  * str = str.replace(/^\s*|\s*$/g,'')   去除字符串两头的空格
@@ -18,3 +21,7 @@ console.log('去两端空格2', str_1.trim())
 console.log('去左侧空格', str_1.replace(/^\s*/,''))
 console.log('去右侧空格', str_1.replace(/(\s*$)/g,''))
 
+// ----------------------------
+String.prototype._trim = function () {
+    return this.replace(/^\s+|\s+$/g, '')
+}
