@@ -1,6 +1,9 @@
 /*
  * @Author: lijy
  */
+/*
+ * @Author: lijy
+ */
 
 // console.log(newArr)
 
@@ -20,7 +23,7 @@ for (let i = 0; i < arr.length; i++) {
         }
     }    
 }
-
+console.log(newArr)
 // 第二种：new Set() 方法会自动删除重复的元素，返回一个类数组。
 
 // -----------------------------------待补充---------------------------------------

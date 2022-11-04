@@ -22,18 +22,18 @@
 // --------------------------------------------------------------
 
 // 2. 借用构造函数（经典继承）
-// function Parent() {
-//     this.names = ['name1', 'name2']
-// }
-// function Child() {
-//     Parent.call(this)
-// }
-// let child1 = new Child()
-// child1.names.push('name3')
-// console.log(child1.names)   // [ 'name1', 'name2', 'name3' ]
+function Parent() {
+    this.names = ['name1', 'name2']
+}
+function Child() {
+    Parent.call(this)
+}
+let child1 = new Child()
+child1.names.push('name3')
+console.log(child1.names)   // [ 'name1', 'name2', 'name3' ]
 
-// let child2 = new Child()
-// console.log(child2.names)   // [ 'name1', 'name2' ]
+let child2 = new Child()
+console.log(child2.names)   // [ 'name1', 'name2' ]
 // 优点：1. 避免了引用类型的属性被所有实例共享；2. 可以在 Fun2 中向 Fun传参
 // 缺点：方法都在构造函数中定义，每次创建实例都会创建一边方法
 
@@ -108,22 +108,22 @@
 // --------------------------------------------------------------------------------
 
 // 7. extends 继承
-class Animal {
-    constructor(name, age){
-        this.name = name
-        this.age = age
-    }
-    run(){
-        return '动物跑了'
-    }
-}
-class Cat extends Animal {
-    eat(){
-        return '猫吃鱼'
-    }
-}
-let cat1 = new Cat('猫', '2')
-console.log(cat1.name)      // 猫
-console.log(cat1.age)       // 2
-console.log(cat1.run())     // 动物跑了
-console.log(cat1.eat())     // 猫吃鱼
+// class Animal {
+//     constructor(name, age){
+//         this.name = name
+//         this.age = age
+//     }
+//     run(){
+//         return '动物跑了'
+//     }
+// }
+// class Cat extends Animal {
+//     eat(){
+//         return '猫吃鱼'
+//     }
+// }
+// let cat1 = new Cat('猫', '2')
+// console.log(cat1.name)      // 猫
+// console.log(cat1.age)       // 2
+// console.log(cat1.run())     // 动物跑了
+// console.log(cat1.eat())     // 猫吃鱼
